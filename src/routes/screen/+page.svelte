@@ -1,0 +1,21 @@
+<div>
+    <Button on:click={() => clicked++}>
+      <Label>Default</Label>
+    </Button>
+    <Button on:click={() => clicked++} disabled>
+      <Label>Disabled</Label>
+    </Button>
+    <Button on:click={() => clicked++} ripple={false}>
+      <Label>No Ripple</Label>
+    </Button>
+  
+  </div>
+   
+  <pre class="status">Clicked: {clicked}</pre>
+   
+  <script lang="ts">
+    import Button, { Label } from '@smui/button';
+   
+    let clicked = 0;
+  </script>
+   
