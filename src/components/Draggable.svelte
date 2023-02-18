@@ -30,8 +30,8 @@
 	}
 </style>
 
-<section on:mousedown={onMouseDown} style="left: {left}px; top: {top}px;" class="draggable">
+<svg on:mousedown={onMouseDown} x={left}px y={top}px>
 	<slot></slot>
-</section>
+</svg>
 
 <svelte:window on:mouseup={onMouseUp} on:mousemove={onMouseMove} />

@@ -1,42 +1,67 @@
 <script lang="ts">
-	import { onMount } from "svelte";
-	import Box from "../../components/Box.svelte";
-	import Draggable from "../../components/Draggable.svelte";
+	import Box from '../../components/Box.svelte';
+	import Connector from '../../components/Connector.svelte';
+	import Draggable from '../../components/Draggable.svelte';
+	import { Vector, type Shape } from '../../components/Geometry';
 
-
-	let boxes = [
-		// use tailwind css to style 4 boxes
-		{ id: "box1", x: 0, y: 0, width: 100, height: 100, style: "" },
-		{ id: "box2", x: 100, y: 0, width: 100, height: 100, style: "" },
-		{ id: "box3", x: 0, y: 100, width: 100, height: 100, style: "" },
-		{ id: "box4", x: 100, y: 100, width: 100, height: 100, style: "" },
-
+	// create 4 Shapes
+	let shapes: Shape[] = [
+		{
+			location: new Vector(0, 0),
+			width: 100,
+			height: 50
+		},
+		{
+			location: new Vector(100, 0),
+			width: 100,
+			height: 50
+		},
+		{
+			location: new Vector(200, 0),
+			width: 100,
+			height: 50
+		},
+		{
+			location: new Vector(300, 0),
+			width: 100,
+			height: 50
+		}
 	];
-
+	let connections = [
+		{ from: 0, to: 1, hasArrow: true , bidirectional: true},
+		{ from: 1, to: 2, hasArrow: true , bidirectional: false },
+		{ from: 2, to: 3, hasArrow: false , bidirectional: true }
+	];
 </script>
 
-<div id="diagram" class=" bg-gray-50 dark:bg-gray-800" style="z-inde : 100">
+<div id="diagram" class=" bg-gray-300 dark:bg-gray-800" style="z-inde : 100">
+	<svg class="w-full h-full dark:text-gray-900 text-white fill-current dark:stroke-white stroke-gray-900 stroke-2" style="z-index: 0">
+		<defs>
+			<marker id="startarrow" markerWidth="15" markerHeight="10" 
+			refX="0" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+			  <polyline points="15 0, 0 5, 15 10" class="text-gray-900 dark:text-white fill-none  stroke-current" />
+			</marker>
+			<marker id="endarrow" markerWidth="15" markerHeight="10" 
+			refX="15" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+				<polyline points="0 0, 15 5, 0 10" class="text-gray-900 dark:text-white fill-none  stroke-current"/>
+			</marker>
+		  </defs>
+		{#each connections as connection}
+			<Connector from={shapes[connection.from]} to={shapes[connection.to]} hasArrow={connection.hasArrow} bidirectional = {connection.bidirectional} />
+		{/each}
 
-	
-	
-	<svg class="absolute top-0 left-0 w-full h-full" style="z-index: 0">
-		<path d="M{boxes[0].x} {boxes[0].y} C{boxes[0].x-((boxes[0].x-boxes[1].x))/2} {boxes[0].y} , {boxes[1].x+((boxes[0].x-boxes[1].x))/2} {boxes[1].y}, {boxes[1].x} {boxes[1].y}" stroke="black" fill="none"/>
+		{#each shapes as box}
+			<!-- create draggable for box and bind x and y to top and left-->
+			<Draggable bind:left={box.location.x} bind:top={box.location.y}>
+				<Box />
+			</Draggable>
+		{/each}
 	</svg>
-
-	{#each boxes as box}
-
-		<!-- create draggable for box and bind x and y to top and left-->
-		
-		<Draggable bind:left = {box.x} bind:top={box.y}>
-			<Box {...box} />
-		</Draggable>
-
-	{/each}
 </div>
 
 <style>
-  #diagram {
-	width: 100%;
-	height: 100%;
-  }
+	#diagram {
+		width: 100%;
+		height: 100%;
+	}
 </style>
