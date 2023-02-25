@@ -18,8 +18,8 @@
 	<div class="flex-none h-full">
 		<SideBar />
 	</div>
-	<div class="flex-grow h-full">
-		<div class="grow h-14 w-full bg-slate-500">
+	<div class="flex flex-col flex-grow h-full">
+		<div class="h-14 w-full bg-slate-500">
 			<h1>Header</h1>
 		</div>
 		<slot />

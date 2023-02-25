@@ -5,15 +5,18 @@
     export let name = 'Home';
     export let icon = 'fa-house';
     export let route = '/';
+
+	$: active = $page.url.pathname === route;
+
 </script>
 
-<li>
+<li class="overflow-hidden">
 	<a
 		href={route}
-		class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-		class:dark:bg-gray-700={$page.url.pathname === route}
-		class:bg-gray-100={$page.url.pathname === route}
+		class="flex items-center pb-2 text-lg font-semibold 
+		 hover:bg-gray-100 dark:hover:bg-gray-700 
+		 {active?' dark:bg-gray-700 bg-gray-100  text-gray-900 dark:text-white':'  text-gray-400 dark:text-gray-400 '}"
 	>
-		<i class="fa-solid {icon}" /><span class="ml-3">{name}</span>
+		<i class="fa-solid {icon} text-2xl m-3 " /><span>{name}</span>
 	</a>
 </li>

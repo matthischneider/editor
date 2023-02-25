@@ -1,21 +1,12 @@
-<div>
-    <Button on:click={() => clicked++}>
-      <Label>Default</Label>
-    </Button>
-    <Button on:click={() => clicked++} disabled>
-      <Label>Disabled</Label>
-    </Button>
-    <Button on:click={() => clicked++} ripple={false}>
-      <Label>No Ripple</Label>
-    </Button>
-  
-  </div>
-   
-  <pre class="status">Clicked: {clicked}</pre>
-   
-  <script lang="ts">
-    import Button, { Label } from '@smui/button';
-   
-    let clicked = 0;
-  </script>
-   
+<script lang="ts">
+	import { files } from '../../stores';
+  import TabBar from '../../components/TabBar.svelte';
+	import { TextArea } from '@microsoft/fast-components';
+  let activeFile : number = 0;
+</script>
+<!-- TabBar on top of component-->
+<div class="flex flex-col w-full h-full text-gray-400 dark:text-gray-400  bg-gray-300 dark:bg-gray-800">
+  <TabBar bind:activeFile={activeFile} />
+  <textarea bind:value={ $files[activeFile].content} class="flex-auto grow text-gray-400 dark:text-gray-400  bg-gray-300 dark:bg-gray-800" />
+</div>
+ 
