@@ -1,11 +1,11 @@
 import { writable } from 'svelte/store';
-import { Document } from './components/Document';
+import { Document } from './model/Document';
 import { browser } from "$app/environment";
-import { Shape, Vector } from './components/Geometry';
+import { Shape, Vector } from './model/Geometry';
 
 const darkTheme = writable(false);
 export { darkTheme };
-
+ 
 const initialFiles = [
     new Document("C:\\Users\\user\\Documents\\test.txt", "test.txt", "This is a test file.", true),
     new Document("C:\\Users\\user\\Documents\\test2.txt", "test2.txt", "Why do you need so many tests?", true),
