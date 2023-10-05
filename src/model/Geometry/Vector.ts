@@ -19,19 +19,3 @@ export class Vector {
         return Math.atan2(this.y, this.x)*180/Math.PI;
     }
 }
-
-
-
-export class Shape {
-    constructor(public location: Vector, public width: number, public height: number, public id?: string, public style?: string, public selected?: boolean, public title? :string,) {
-        this.location = location;
-        this.width = width;
-        this.height = height;
-        this.id = id;
-        this.style = style;
-        this.selected = selected;
-        this.title = title;
-        
-    }
-}
-

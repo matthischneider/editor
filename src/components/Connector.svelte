@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { Shape } from './Geometry';
-    import { Vector } from './Geometry';
+	import type { Shape } from '../model/Geometry';
+    import { Vector } from '../model/Geometry';
 
 	export let from: Shape | null = null;
 	export let to: Shape | null = null;

@@ -16,7 +16,10 @@
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^2.0.0",
+		"@sveltejs/adapter-node": "^1.2.1",
 		"@sveltejs/kit": "^1.5.0",
+		"@types/body-parser": "^1.19.2",
+		"@types/cors": "^2.8.13",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"autoprefixer": "^10.4.13",
@@ -36,8 +39,10 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@microsoft/fast-components": "^2.30.6",
-		"@microsoft/fast-element": "^1.11.0",
-		"@microsoft/fast-foundation": "^2.47.1-0"
+		"@prisma/client": "^4.11.0",
+		"@types/node": "^18.14.1",
+		"body-parser": "^1.20.2",
+		"cors": "^2.8.5",
+		"sqlite3": "^5.1.4"
 	}
 }

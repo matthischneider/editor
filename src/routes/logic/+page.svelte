@@ -22,8 +22,8 @@
 			<Connector from={$shapes[connection.from]} to={$shapes[connection.to]} hasArrow={connection.hasArrow} bidirectional = {connection.bidirectional} />
 		{/each}
 
-		{#each $shapes as box}
-				<Box bind:box={box} />
+		{#each $shapes as box }
+				<Box bind:box={box} ></Box>/>
 		{/each}
 	</svg>
 </div>
